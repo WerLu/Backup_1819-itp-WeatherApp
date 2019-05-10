@@ -1,0 +1,116 @@
+package forecast;
+
+import java.util.List;
+
+public class forecastWeather_JSON {
+    public String cod;
+    public double message;
+    public int cnt;
+    public List<Liste> list;
+    public City city;
+
+    public forecastWeather_JSON(String cod, double message, int cnt, List<Liste> list, City city){
+        this.cod = cod;
+        this.message = message;
+        this.cnt = cnt;
+        this.list = list;
+        this.city = city;
+    }
+}
+
+class Weather {
+    public int id;
+    public String main;
+    public String description;
+    public String icon;
+
+    public Weather(int id, String main, String description, String icon){
+        this.id = id;
+        this.main = main;
+        this.description = description;
+        this.icon = icon;
+    }
+}
+
+class Liste {
+    public int dt;
+    public Main main;
+    public List<Weather> weather;
+    public Clouds clouds;
+    public Wind wind;
+    public Rain rain;
+    public Sys sys;
+    public String dt_txt;
+
+    public Liste(int dt, Main main, List<Weather> weather, Clouds clouds, Rain rain, Sys sys, String dt_txt){
+        this.dt = dt;
+        this.main = main;
+        this.weather = weather;
+        this.clouds = clouds;
+        this.wind = wind;
+        this.rain = rain;
+        this.sys = sys;
+        this.dt_txt = dt_txt;
+    }
+}
+
+class Coord {
+    public double lat;
+    public double lon;
+
+    public Coord(double lat, double lon){
+        this.lat = lat;
+        this.lon = lon;
+    }
+}
+
+class Sys {
+    public String pod;
+
+    public Sys(String pod) {
+        this.pod = pod;
+    }
+}
+
+
+class Wind {
+    public double speed ;
+    public double deg;
+
+    public Wind(double speed, double deg) {
+        this.speed = speed;
+        this.deg = deg;
+    }
+}
+
+class Rain {
+    public double __invalid_name__3h;
+
+    public Rain(double __invalid_name__3h){
+        this.__invalid_name__3h = __invalid_name__3h;
+    }
+}
+
+class City {
+    public int id;
+    public String name;
+    public Coord coord;
+    public String country;
+    public int population;
+
+    public City(int id, String name, Coord coord, String country, int population){
+        this.id = id;
+        this.name = name;
+        this.coord = coord;
+        this.country = country;
+        this.population = population;
+    }
+}
+
+class Clouds {
+    public int all;
+
+    public Clouds(int all){
+        this.all = all;
+    }
+}
