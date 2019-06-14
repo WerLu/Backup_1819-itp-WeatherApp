@@ -1,4 +1,4 @@
-package forecast;
+package withFXML;
 
 import java.util.List;
 

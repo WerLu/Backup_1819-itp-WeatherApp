@@ -1,6 +1,7 @@
 package forecast;
 
 import com.google.gson.Gson;
+import javafx.application.Application;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +23,8 @@ public class test {
 
         forecastWeather_JSON forecastWeather = gson.fromJson(json, forecastWeather_JSON.class);
         output += "City: " + forecastWeather.city.name + "\n";
-        output += "1st Temperature: " + forecastWeather.list.get(0).main.temp + "\n";
+        output += "Time: " + forecastWeather.list.get(0).dt_txt+ "\n";
+        output += "1st Temperature: " + forecastWeather.list.get(0)+ "\n";
         output += "2nd Temperature: " + forecastWeather.list.get(1).main.temp + "\n";
         output += "3rd Temperature: " + forecastWeather.list.get(2).main.temp + "\n";
         output += "4th Temperature: " + forecastWeather.list.get(3).main.temp + "\n";
@@ -37,7 +39,7 @@ public class test {
         String readLine = null;
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
-        connection.setRequestProperty("X-RapidAPI-Host", "community-open-weather-map.p.rapidapi.com"); // set userId its a sample here
+        connection.setRequestProperty("X-RapidAPI-Host", "community-open-weather-map.p.rapidapi.com");
         connection.setRequestProperty("X-RapidAPI-Key", "037ea10f45msh43d3dcf55ea5884p1a0253jsnc63de8255899");
 
         int responseCode = connection.getResponseCode();

@@ -1,4 +1,4 @@
-package forecast;
+//package forecast;
 
 public class Main {
     public double temp;
