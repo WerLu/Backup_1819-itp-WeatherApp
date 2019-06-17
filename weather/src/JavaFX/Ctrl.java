@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
 import java.net.URL;
 
@@ -95,20 +96,28 @@ public class Ctrl {
      *
      * The corresponding View "fxml3.fxml" is also by Lukas Werner
      */
+    private boolean firsttime = true;
 
     public void clearCharts(){
         linechartpane.getChildren().clear();
+        textCity.setText("");
     }
     public void setlc() throws IOException {
         Gson gson = new Gson();
+
         URL url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?q=" + textCity.getText() + "&units=metric");
         try{
             String json = Weather.GetRequest.getRequest(url);
+            if (json == null) throw new HTTPException(200);
             Weather.forecastWeather_JSON forecastWeather = gson.fromJson(json, Weather.forecastWeather_JSON.class); //Convert JSON into Java Classes
+            /*if(forecastWeather.cod == "200"){
+                throw new HTTPException(200) ;
+            }*/
 
-            lc.setTitle("5 day Weather Forecast");
+            lc.setTitle("5 Day Weather Forecast");
             xAxisLineChart.setLabel("Time");
             yAxisLineChart.setLabel("Temperature in Celsius");
+
 
             XYChart.Series seriesLineChart = new XYChart.Series();
             seriesLineChart.setName(forecastWeather.city.name + ", " + forecastWeather.city.country);
@@ -130,14 +139,26 @@ public class Ctrl {
 
             lc.getData().add(seriesLineChart);
             lc.setPrefWidth(900);
-            linechartpane.getChildren().add(lc);
-        } catch (NullPointerException e) {
+
+            if (firsttime == true){
+                linechartpane.getChildren().addAll(lc);
+                firsttime = false;
+            }
+        } catch (IOException e) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("ERROR");
-            a.setHeaderText("entered City is incorrect");
+            a.setHeaderText("Error with the Request: entered City is incorrect");
             a.setContentText("Please enter a valid City name!");
             a.showAndWait();
+        } catch (HTTPException e) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("ERROR");
+            a.setHeaderText("too many Requests");
+            a.setContentText("Please try again later!");
+            a.showAndWait();
         }
+
+        textCity.setText("");
 
     }
 
