@@ -116,13 +116,14 @@ public class Ctrl {
                         date_org.split(" ")[1].split(":")[0] + ":" +
                         date_org.split(" ")[1].split(":")[1];
                 //day = date_org.split("-")[2].split(" ")[0];
-                System.out.println(date + " Temp: " + temp + "\n");
+                //System.out.println(date + " Temp: " + temp + "\n");
                 seriesLineChart.getData().add(new XYChart.Data(date, temp));
             }
 
             lc.getData().add(seriesLineChart);
-            lc.setPrefWidth(800);
-            linechartpane.getChildren().addAll(lc);
+            lc.setPrefWidth(900);
+            linechartpane.getChildren().clear();
+            linechartpane.getChildren().add(lc);
         } catch (NullPointerException e) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("ERROR");
