@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
 import java.net.URL;
 
@@ -82,6 +81,7 @@ public class Ctrl {
         bc.getData().addAll(series1, series2, series3);
     }
 
+
     @FXML
     CategoryAxis xAxisLineChart = new CategoryAxis();
     @FXML
@@ -90,13 +90,21 @@ public class Ctrl {
     LineChart<String,Number> lc =
             new LineChart<String,Number>(xAxisLineChart,yAxisLineChart);
 
+    /**
+     * Following Methods clearCharts and setlc by Lukas Werner
+     *
+     * The corresponding View "fxml3.fxml" is also by Lukas Werner
+     */
 
+    public void clearCharts(){
+        linechartpane.getChildren().clear();
+    }
     public void setlc() throws IOException {
         Gson gson = new Gson();
         URL url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?q=" + textCity.getText() + "&units=metric");
         try{
             String json = Weather.GetRequest.getRequest(url);
-            Weather.forecastWeather_JSON1 forecastWeather = gson.fromJson(json, Weather.forecastWeather_JSON1.class); //Convert JSON into Java Classes
+            Weather.forecastWeather_JSON forecastWeather = gson.fromJson(json, Weather.forecastWeather_JSON.class); //Convert JSON into Java Classes
 
             lc.setTitle("5 day Weather Forecast");
             xAxisLineChart.setLabel("Time");
@@ -122,7 +130,6 @@ public class Ctrl {
 
             lc.getData().add(seriesLineChart);
             lc.setPrefWidth(900);
-            linechartpane.getChildren().clear();
             linechartpane.getChildren().add(lc);
         } catch (NullPointerException e) {
             Alert a = new Alert(Alert.AlertType.ERROR);

@@ -18,6 +18,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
+                  <Button fx:id="clear" mnemonicParsing="false" text="Clear Charts" onAction="#clearCharts"/>
                </children>
                <padding>
                   <Insets left="10.0" top="10.0" />
