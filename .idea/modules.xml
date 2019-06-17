@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/1819-itp-restfuljavafx-itp3-javafxteam06.iml" filepath="$PROJECT_DIR$/.idea/1819-itp-restfuljavafx-itp3-javafxteam06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sandbox/GSON/GSONTest2/GSONTest2.iml" filepath="$PROJECT_DIR$/sandbox/GSON/GSONTest2/GSONTest2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sandbox/GSON/test/test.iml" filepath="$PROJECT_DIR$/sandbox/GSON/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather/weather.iml" filepath="$PROJECT_DIR$/weather/weather.iml" />
+    </modules>
+  </component>
+</project>

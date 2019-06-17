@@ -21,6 +21,8 @@ public class graph_test extends Application {
         String urlstr = "https://community-open-weather-map.p.rapidapi.com/forecast?q=linz&units=metric";
         URL url = new URL(urlstr); //create URL
         String json = GetRequest(url); //HTTP Request
+        System.out.println(json);
+        System.out.println("\n\n\n\n\n\n\n\n");
         forecastWeather_JSON forecastWeather = gson.fromJson(json, forecastWeather_JSON.class); //Convert JSON into Java Classes
 
         primaryStage.setTitle("Line Chart Sample");

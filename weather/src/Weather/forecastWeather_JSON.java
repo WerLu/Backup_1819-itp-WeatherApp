@@ -1,4 +1,4 @@
-package Weather;
+/*package Weather;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ class Weather {
 
 class Liste {
     public int dt;
-    public Main main;
+    public JavaFX main;
     public List<Weather> weather;
     public Clouds clouds;
     public Wind wind;
@@ -42,7 +42,7 @@ class Liste {
     public Sys sys;
     public String dt_txt;
 
-    public Liste(int dt, Main main, List<Weather> weather, Clouds clouds, Rain rain, Sys sys, String dt_txt){
+    public Liste(int dt, JavaFX main, List<Weather> weather, Clouds clouds, Rain rain, Sys sys, String dt_txt){
         this.dt = dt;
         this.main = main;
         this.weather = weather;
@@ -54,7 +54,7 @@ class Liste {
     }
 }
 
-class Main {
+class JavaFX {
     public double temp;
     public double temp_min;
     public double temp_max;
@@ -64,7 +64,7 @@ class Main {
     public int humidity;
     public double temp_kf;
 
-    public Main(double temp, double temp_min, double temp_max, double pressure, double sea_level, double grnd_level, int humidity, double temp_kf) {
+    public JavaFX(double temp, double temp_min, double temp_max, double pressure, double sea_level, double grnd_level, int humidity, double temp_kf) {
         this.temp = temp;
         this.temp_min = temp_min;
         this.temp_max = temp_max;
@@ -136,3 +136,4 @@ class Clouds {
         this.all = all;
     }
 }
+*/

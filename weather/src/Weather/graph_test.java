@@ -1,4 +1,4 @@
-package Weather;
+/*package Weather;
 
 import com.google.gson.Gson;
 import javafx.application.Application;
@@ -66,3 +66,4 @@ public class graph_test extends Application {
 
     public static void main(String[] args) { launch(args);}
 }
+*/

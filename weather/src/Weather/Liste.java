@@ -1,10 +1,10 @@
-//package forecast;
+package Weather;//package forecast;
 
 import java.util.List;
 
-/*public class Liste {
+public class Liste {
     public int dt;
-    public JavaFX main;
+    public Main main;
     public List<Weather> weather;
     public Clouds clouds;
     public Wind wind;
@@ -12,7 +12,7 @@ import java.util.List;
     public Sys sys;
     public String dt_txt;
 
-    public Liste(int dt, JavaFX main, List<Weather> weather, Clouds clouds, Rain rain, Sys sys, String dt_txt){
+    public Liste(int dt, Main main, List<Weather> weather, Clouds clouds, Rain rain, Sys sys, String dt_txt){
         this.dt = dt;
         this.main = main;
         this.weather = weather;
@@ -23,4 +23,3 @@ import java.util.List;
         this.dt_txt = dt_txt;
     }
 }
-*/
