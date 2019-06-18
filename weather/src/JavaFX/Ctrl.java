@@ -144,10 +144,10 @@ public class Ctrl {
                 linechartpane.getChildren().addAll(lc);
                 firsttime = false;
             }
-        } catch (IOException e) {
+        } catch (NullPointerException e) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("ERROR");
-            a.setHeaderText("Error with the Request: entered City is incorrect");
+            a.setHeaderText("entered City is incorrect");
             a.setContentText("Please enter a valid City name!");
             a.showAndWait();
         } catch (HTTPException e) {
