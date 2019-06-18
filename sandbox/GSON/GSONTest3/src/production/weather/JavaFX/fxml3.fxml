@@ -14,7 +14,7 @@
             <HBox prefHeight="69.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <TextField fx:id="textCity" prefHeight="25.0" prefWidth="103.0" promptText="City" />
-                  <Button fx:id="cmd1" mnemonicParsing="false" onAction="#setlc" text="Display 5 Day Forecast">
+                  <Button fx:id="cmd1" mnemonicParsing="false" onAction="#setTempLC" text="Display 5 Day Forecast">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>

@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Ctrl {
@@ -21,21 +22,30 @@ public class Ctrl {
     AnchorPane TemperatureCourse;
 
     @FXML
+    AnchorPane Weather2;
+
+    @FXML
+    AnchorPane temp_forecast;
+
+    @FXML
     AnchorPane linechartpane;
 
     @FXML
-    AnchorPane Weather3;
+    AnchorPane linechartpane2;
 
     @FXML
     TextField textCity;
+
+    @FXML
+    TextField textCity2;
 
     public void loadFxml() throws IOException {
         AnchorPane newLoadedPane = FXMLLoader.load(getClass().getResource("fxml2.fxml"));
         TemperatureCourse.getChildren().add(newLoadedPane);
         AnchorPane newLoadedPane2 = FXMLLoader.load(getClass().getResource("fxml3.fxml"));
-        Weather3.getChildren().add(newLoadedPane2);
-        /*TabPane newLoadedPane3 = FXMLLoader.load(getClass().getResource("fxml3.fxml"));
-        TemperatureCourse.getChildren().add(newLoadedPane3);*/
+        temp_forecast.getChildren().add(newLoadedPane2);
+        AnchorPane newLoadedPane3 = FXMLLoader.load(getClass().getResource("fxml4.fxml"));
+        Weather2.getChildren().add(newLoadedPane3);
     }
 
     @FXML
@@ -91,28 +101,40 @@ public class Ctrl {
     LineChart<String,Number> lc =
             new LineChart<String,Number>(xAxisLineChart,yAxisLineChart);
 
+
     /**
-     * Following Methods clearCharts and setlc by Lukas Werner
+     * Following Methods clearCharts and setTempLC and doRequest by Lukas Werner
      *
      * The corresponding View "fxml3.fxml" is also by Lukas Werner
+     *
      */
     private boolean firsttime = true;
+    Gson gson = new Gson();
 
     public void clearCharts(){
+        lc.getData().clear();
         linechartpane.getChildren().clear();
         textCity.setText("");
+        firsttime = true;
     }
-    public void setlc() throws IOException {
-        Gson gson = new Gson();
 
+    public Weather.forecastWeather_JSON doRequest(String city) throws IOException {
         URL url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?q=" + textCity.getText() + "&units=metric");
+        String json = Weather.GetRequest.getRequest(url);
+        if (json == null) throw new HTTPException(200);
+        Weather.forecastWeather_JSON forecastWeather = gson.fromJson(json, Weather.forecastWeather_JSON.class); //Convert JSON into Java Classes
+        if(forecastWeather.cod == "200"){
+            throw new NullPointerException("ey") ;
+        } else {
+            return forecastWeather;
+        }
+    }
+
+    public void setTempLC() throws IOException {
+        if (textCity.getText() == "") throw new NullPointerException("ey");
+
         try{
-            String json = Weather.GetRequest.getRequest(url);
-            if (json == null) throw new HTTPException(200);
-            Weather.forecastWeather_JSON forecastWeather = gson.fromJson(json, Weather.forecastWeather_JSON.class); //Convert JSON into Java Classes
-            /*if(forecastWeather.cod == "200"){
-                throw new HTTPException(200) ;
-            }*/
+            Weather.forecastWeather_JSON forecastWeather = doRequest(textCity.getText());
 
             lc.setTitle("5 Day Weather Forecast");
             xAxisLineChart.setLabel("Time");
@@ -145,8 +167,8 @@ public class Ctrl {
                 firsttime = false;
             }
         } catch (NullPointerException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("ERROR");
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("WARNING");
             a.setHeaderText("entered City is incorrect");
             a.setContentText("Please enter a valid City name!");
             a.showAndWait();

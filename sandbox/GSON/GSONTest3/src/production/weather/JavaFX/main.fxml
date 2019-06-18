@@ -14,9 +14,9 @@
                 <AnchorPane fx:id="TemperatureCourse" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
-        <Tab onSelectionChanged="#loadFxml" text="Weather forecast">
+        <Tab onSelectionChanged="#loadFxml" text="Temperature forecast">
             <content>
-                <AnchorPane fx:id="Weather3" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane fx:id="temp_forecast" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
         <Tab text="Weather2">

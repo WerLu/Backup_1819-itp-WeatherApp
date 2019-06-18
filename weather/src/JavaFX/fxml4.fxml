@@ -13,18 +13,18 @@
          <children>
             <HBox prefHeight="69.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <TextField fx:id="textCity" prefHeight="25.0" prefWidth="103.0" promptText="City" />
-                  <Button fx:id="cmd1" mnemonicParsing="false" onAction="#setTempLC" text="Display 5 Day Forecast">
+                  <TextField fx:id="textCity2" prefHeight="25.0" prefWidth="103.0" promptText="City" />
+                  <Button fx:id="cmd2" mnemonicParsing="false" onAction="#setWindLC" text="Display 5 Day Forecast">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
-                  <Button fx:id="clear" mnemonicParsing="false" text="Clear Charts" onAction="#clearCharts"/>
+                  <Button fx:id="clear2" mnemonicParsing="false" text="Clear Charts" onAction="#clearCharts"/>
                </children>
                <padding>
                   <Insets left="10.0" top="10.0" />
                </padding>
             </HBox>
-            <AnchorPane fx:id="linechartpane" prefHeight="378.0" prefWidth="600.0" />
+            <AnchorPane fx:id="linechartpane2" prefHeight="378.0" prefWidth="600.0" />
          </children>
       </VBox>
    </children>
